@@ -1,7 +1,5 @@
 package com.gnosyz.deltahuey;
 
-import org.apache.spark.api.java.function.FilterFunction;
-import org.apache.spark.launcher.SparkLauncher;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.SparkSession;
 
