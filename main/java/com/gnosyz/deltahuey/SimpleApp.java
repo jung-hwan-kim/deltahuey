@@ -8,6 +8,7 @@ public class SimpleApp {
 
 
 
+
         String logFile = "README.md"; // Should be some file on your system
 
         SparkSession spark = SparkSession.builder().appName("SimplApp").getOrCreate();
