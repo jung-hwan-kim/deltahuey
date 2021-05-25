@@ -12,6 +12,7 @@
         logFile "README.md"
         logData (.textFile (.read spark) logFile)
         ]
+
     (.info log "### START ###")
     (.show logData)
     )
