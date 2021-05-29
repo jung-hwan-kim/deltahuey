@@ -30,8 +30,10 @@ public class SparkApp {
     public void stop() {
         session.stop();
     }
+    public String toString() {
+        return session.toString();
+    }
     public SparkSession getSession() {
         return session;
     }
-
 }
