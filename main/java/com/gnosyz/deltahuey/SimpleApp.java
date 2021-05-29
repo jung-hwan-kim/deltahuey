@@ -1,9 +1,8 @@
 package com.gnosyz.deltahuey;
 
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Encoder;
-import org.apache.spark.sql.Encoders;
-import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.*;
+import org.apache.spark.sql.streaming.StreamingQuery;
+import org.apache.spark.sql.streaming.StreamingQueryException;
 
 import java.io.Serializable;
 import java.sql.Time;
@@ -36,8 +35,14 @@ public class SimpleApp {
         spark.log().info("###-###-<START>-###-###");
 
 
-
+        Dataset<Row> rows = spark.readStream().format("delta").load("/var/data/delta/ingest-log-3");
+        try {
+            StreamingQuery query = rows.writeStream().format("console").start();
+            query.awaitTermination();
+        } catch (Exception e) {
+            e.printStackTrace();
+            spark.stop();
+        }
         spark.log().info("###-###-<END>-###-###");
-        spark.stop();
     }
 }
