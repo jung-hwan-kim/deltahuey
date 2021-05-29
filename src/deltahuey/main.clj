@@ -7,12 +7,6 @@
 
 (defonce runnable-service (http/create-server service/service))
 
-(defn run-spark[]
-  (let [spark (.getOrCreate (.appName (SparkSession/builder) "ClojureApp"))
-        app (new SimpleApp spark)
-        ]
-    (.log app "trig/from/clojure")
-    (.stop spark)))
 
 (defn -main[& args]
   (reset! service/spark (new SparkApp "ingest-3"))
