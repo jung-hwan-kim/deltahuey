@@ -28,4 +28,6 @@ public class SimpleApp {
             e.printStackTrace();
             spark.stop();
         }
-        spark.log().info("###-###-<END>-###-###")
+        spark.log().info("###-###-<END>-###-###");
+    }
+}
